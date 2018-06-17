@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Lesson2">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="../js/controller/Lesson2.js"></script>
+    <title>Lesson2</title>
+</head>
+<body>
+这节课学习Expression表达式
+<div ng-controller="MyController21">
+    <h2>1.测试$watch服务</h2>
+    <input ng-model="expr" type="text" placeholder="Enter your name">
+    <h2>{{parseValue}}</h2>
+    <h3>读后感：该服务能够监视变量的值，当值发生变化时，将执行watch内的函数</h3>
+</div>
+<div ng-controller="MyController22">
+    <h2>2.测试$parse服务</h2>
+    <h2>{{ParsedValue}}</h2>
+    <input ng-model="age" type="text" placeholder="Enter your name">
+    <h2>{{ParsedValue2}}</h2>
+    <h2>{{ParsedValue3}}</h2>
+    <h3>读后感：该服务能够执行计算过程</h3>
+</div>
+
+</body>
+</html>

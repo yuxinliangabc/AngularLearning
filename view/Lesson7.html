@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Lesson7">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="../js/controller/Lesson7.js"></script>
+    <link rel="stylesheet" href="../css/FormCheck.css" type="text/css"/>
+    <title>Lesson7</title>
+</head>
+<body>
+第7课学习 内置指令
+<div ng-controller="MyController71">
+    <h2>1.ng-disabled</h2>
+    <input type="text" ng-model="someProperty" placeholder="Input Something">
+    <button ng-disabled="!someProperty">Button</button>
+    <textarea ng-disabled="isDisabled">Wait 5 seconds</textarea>
+    <h3>为什么非要$rootScope才可以</h3>
+
+    <h2>2.ng-readonly</h2>
+    Type here to make sibling readonly:
+    <input type="text" ng-model="someProperty2"><br/>
+    <input type="text"
+           ng-readonly="someProperty2 === 'nihao'"
+           value="Some text here"/>
+    <h3>当第一个文本框输入nihao时，第二个变为只读</h3>
+
+    <h2>3.ng-checked</h2>
+    someProperty<input ng-model="someProperty3"/>
+    <input type="checkbox"
+           ng-checked="someProperty3"
+           ng-init="someProperty3 = 'Agree'"
+           ng-model="isChecked">
+    <h3>用ng-init为属性赋值为Agree，ng-checked条件为someProperty有值.通过ng-checked更新选中状态
+        的checkbox，不会更新ng-model</h3>
+
+    <h2>3.ng-selected</h2>
+    <label>Select Two Fish:</label>
+    <input type="checkbox"
+           ng-model="isTwoFish"><br/>
+    <select>
+        <option>One Fish</option>
+        <option ng-selected="isTwoFish">Two Fish</option>
+        <option>Third Fish</option>
+    </select>
+    <h3>当checkbox被选中时，isTwoFish为true，第二条鱼被选中</h3>
+    <h3>当checkbox的ng-model值 只包含true和false</h3>
+
+    <h2>3.ng-href</h2>
+    <!-- 当 href 包含一个 {{expression}}时总是使用 ng-href -->
+    <a ng-href="{{ myHref }}">I'm feeling lucky, when I load</a>
+    <!-- 用户单击之前，href不会加载 -->
+    <a href="{{ myHref }}">I'm feeling 404</a>
+    <h3>当ng-href表达式有值的时候才会表示为超链接，或者说展示为href</h3>
+
+    <h2>4.ng-src</h2>
+    <h1>WrongWay</h1>
+    <img src="{{imgSrc}}"/>
+    <h1>Rightway</h1>
+    <img ng-src="{{imgSrc}}"/>
+    <h3>AngularJS会告诉浏览器在ng-src对应的表达式生效之前不要加载图像</h3>
+    <h3>第一种用src方式可以发现，调试模式会报错</h3>
+
+    <h2>5.ng-controller（通过引用进行值的设置）</h2>
+    <div ng-controller="Lesson7a">
+        {{sV.someValue}}
+        <button ng-click="pAction()">Parent Function</button>
+        <div ng-controller="Lesson7b">
+            {{sV.someValue}}
+            <button ng-click="cAction()">Child Function</button>
+        </div>
+    </div>
+
+    <h3>若通过对象修改子作用域或者父作用域时将作为引用修改，同步修改</h3>
+
+    <h2>6.ng-controller（通过值进行值的设置）</h2>
+    <div ng-controller="Lesson7a">
+        {{someValue}}
+        <button ng-click="pAction()">Parent Function</button>
+        <div ng-controller="Lesson7b">
+            {{someValue}}
+            <button ng-click="cAction()">Child Function</button>
+        </div>
+    </div>
+    <h3>若通过值修改父作用域时将同步修改子作用域的值（原型继承），但是点击子域后，子scope将新建同名属性</h3>
+</div>
+
+</body>
+</html>

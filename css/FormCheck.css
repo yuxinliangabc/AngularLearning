@@ -1,0 +1,18 @@
+form input.ng-invalid {
+    border: 1px solid red;
+}
+form input.ng-valid {
+    border: 1px solid green;
+}
+
+form small.error{
+    color: red;
+}
+
+.odd {
+    background-color: #dafcff;
+}
+
+.even{
+    background-color: #ffe5e5;
+}

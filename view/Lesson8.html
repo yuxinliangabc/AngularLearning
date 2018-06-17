@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Lesson8">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="../js/controller/Lesson8.js"></script>
+    <link rel="stylesheet" href="../css/FormCheck.css" type="text/css"/>
+    <title>Lesson8</title>
+</head>
+<body>
+第8课学习 内置指令2
+<div ng-controller="MyController81">
+    <h2>1.ng-if</h2>
+    <input type="checkbox" ng-model="isChecked">
+    <a ng-if="isChecked">Hello Checked!</a>
+    <a ng-if="!isChecked">Hello UnChecked!</a>
+    <h3></h3>
+
+    <h2>2.ng-repeat</h2>
+    <ul>
+        <li ng-repeat="person in people" ng-class="{even:!$even, odd:!$odd}">
+            {{$index}}&nbsp&nbsp&nbsp{{person.name}} lives in {{person.city}}
+        </li>
+    </ul>
+    <h3>even 偶数 odd 奇数</h3>
+
+    <h2>2.ng-switch</h2>
+    <input type="text" ng-model="person.name"/>
+    <div ng-switch on="person.name">
+        <p ng-switch-default>And the winner is</p>
+        <h1 ng-switch-when="Ari">{{ person.name }}</h1>
+    </div>
+    <ul>
+        <li ng-switch on="person.city" ng-repeat="person in people" ng-class="{even:!$even, odd:!$odd}">
+            {{$index}}&nbsp&nbsp&nbsp{{person.name}} lives in {{person.city}}
+            <p ng-switch-default>未知城市</p>
+            <p ng-switch-when="天津">{{ person.city }}</p>
+        </li>
+    </ul>
+    <h3>default 为默认值，当不为when的值时为default</h3>
+
+    <h2>3.ng-bind</h2>
+    <!--<div ng-model="greeting">-->
+    <p ng-bind="greeting"></p>
+    <h1>{{greeting}}</h1>
+    <p ng-model="greeting" ng-cloak>{{greeting}}</p>
+    <!--</div>-->
+    <h3>没有所谓的抖动？此外，只有$timeout内的数据改变才会被ng捕捉到,settimeout方法不会被捕获</h3>
+</div>
+
+</body>
+</html>

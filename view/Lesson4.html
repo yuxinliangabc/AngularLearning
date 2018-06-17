@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Lesson4">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="../js/controller/Lesson4.js"></script>
+    <link rel="stylesheet" href="../css/FormCheck.css" type="text/css"/>
+    <title>Lesson4</title>
+</head>
+<body>
+这节课学习表单验证
+<div ng-controller="MyController41">
+    <h2>1.表单验证</h2>
+    <!--novalidate-->
+    <form name="form" ng-submit="submit()" novalidate>
+        <h3>必填项</h3>
+        <input type="email" required name="email" ng-model="email" placeholder="Email Address"/>
+        <span ng-show="form.email.$error.required">
+        This is a required field
+        </span>
+        <h3>最小长度5</h3>
+        <input name="minLength" type= "text" ng-model="minLength" ng-minlength="5"/>
+        <span ng-show="form.minLength.$error.minlength">
+        minLength is 5
+        </span>
+        <h3>最大长度5</h3>
+        <input name="maxLength" type= "text" ng-model="maxLength" ng-maxlength="5" />
+        <h3>模式匹配</h3>
+        <input name="pattern" type= "text" ng-model="pattern" ng-pattern="/^(86){0,1}1\d{10}$/" />
+        <h3>数字验证</h3>
+        <input name="num" type= "number" ng-model="num" />
+        <h3>url验证</h3>
+        <input name="url" type= "url" ng-model="url" />
+        <!--<input type="submit" value="注册" ng-disabled="form.$pristine">-->
+        <input type="submit" value="注册" ng-disabled="form.$invalid">
+        <!--<input type="submit" value="注册" ng-disabled="form.$pristine">-->
+    </form>
+    <h3>读后感：novalid 取消浏览器的表单验证,所有验证必须有绑定ng-model才可以生效</h3>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Lesson6">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="../js/controller/Lesson6.js"></script>
+    <link rel="stylesheet" href="../css/FormCheck.css" type="text/css"/>
+    <title>Lesson6</title>
+</head>
+<body>
+这节课学习指令简介
+<div ng-controller="MyController61">
+    <h2>1.基本指令</h2>
+    <my-directive></my-directive>
+    <!--<div my-directive>属性方式调用</div>-->
+    <!--<div class="my-directive">类的方式调用</div>-->
+    <!--directive:my-directive 注释的方式调用-->
+    <h3>Q1：指令本质上就是AngularJS扩展具有自定义功能的HTML元素的途径，我们把创建的这些自定义元素称作指令</h3>
+    <h3>Q2：指令名为myDirective 元素名为my-directive 这是Angular的解析方式么？  Yes</h3>
+    <h3>Q3：replace方法会用自定义元素取代指令声明，而不是嵌套在其内部</h3>
+    <h3>Q4：restrict: 格式 元素（E）、属性（A）、类（C）或注释（M） 一般用属性的方式调用,跨平台比较好</h3>
+
+    <div my-directive2>属性方式调用</div>
+
+    <h2>2.内置指令给属性传递参数</h2>
+    <h1 ng-init="greeting='HelloWorld'">
+        The greeting is: {{ greeting }}
+    </h1>
+
+    <h2>3.自建指令传递参数</h2>
+    <div url-direct some-attr="http://www.baidu.com" url-description="点击跳转到百度">a</div>
+    <h3>Q1：@为绑定策略，ngValue:'@ng-tmp'表示将DOM中的ng-tmp值绑定为指令中的ngValue,注意，此处只绑定了指令内部数据</h3>
+
+    <h2>4.双向绑定指令示例</h2>
+    <label>Their URL field:</label>
+    <input type="text" ng-model="theirUrl">
+    <div my-directive3
+         some-attr="theirUrl"
+         my-link-text="Click me to go to Google">
+    </div>
+    <h3>Q1：ng-model的theirUrl并非指令内部的theirUrl，他们是处于不同的作用域，因此不能视为一个值</h3>
+</div>
+
+</body>
+</html>

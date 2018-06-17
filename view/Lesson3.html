@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Lesson3">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="../js/controller/Lesson3.js"></script>
+    <title>Lesson3</title>
+</head>
+<body>
+<h1 style="color: red;">第三课-学习过滤器</h1>
+<div>
+    <h2>1.大小写过滤器</h2>
+    <input ng-model="expr" type="text" placeholder="Enter your name">
+    <h3>{{expr | uppercase}}</h3>
+    <h3>{{expr | lowercase}}</h3>
+</div>
+
+<div>
+    <h2>2.货币过滤器</h2>
+    <input ng-model="curr" type="text" placeholder="Enter your name">
+    <h3>{{curr | currency}}</h3>
+</div>
+
+<div ng-controller="MyController31">
+    <h2>3.日期过滤器</h2>
+    <input ng-model="time" type="text" placeholder="Enter time">
+    <input ng-model="format" type="text" placeholder="Enter time format">
+    <h3>{{timeResult}}</h3>
+</div>
+
+<div>
+    <h2>4.字符串过滤</h2>
+    <h3>{{['lilei','frida','jacob','james','a'] | filter:'a'}}</h3>
+</div>
+
+<div>
+    <h2>5.对象过滤</h2>
+    <h3>{{[{'name':'Lufy','sex':'boy'},{'name':'chopper','sex':'unknown'}] | filter:{'sex':'boy'} }}</h3>
+</div>
+
+<div ng-controller="MyController31">
+    <h2>6.自定义过滤器</h2>
+    <input ng-model="time2" type="text" placeholder="Enter time">
+    <h3>{{time2 | ChDateFilter}}</h3>
+</div>
+
+<div>
+    <h2>7.Json过滤器</h2>
+    <!--<input ng-model="jjson" type="text" placeholder="Enter time">-->
+    <h3>{{[{'name':'Lufy','sex':'boy'},{'name':'chopper','sex':'unknown'}] | json}}</h3>
+</div>
+
+<div ng-controller="MyController31">
+    <h2>8.自定义过滤方法</h2>
+    <input ng-model="time3" type="text" placeholder="Enter time">
+    <!--<h3>{{['2019-12-12','1991-01-01','2001-12-31'] | filter:YearMore2k}}</h3>-->
+    <h3>{{time3.toString() | filter:YearMore2k}}</h3><h5 style="font-style: italic ">为什么把每个字符拆开了？</h5>
+</div>
+
+<div>
+    <h2>9.限制长度过滤器</h2>
+
+    <input ng-model="limitor1" type="text" placeholder="Enter msg">
+    <input ng-model="idx" type="text" placeholder="Enter count">
+
+    <h3>限制前几位{{limitor1 | limitTo:idx}}</h3>
+
+    <h3>限制后几位{{limitor1 | limitTo:-idx}}</h3>
+
+    <h3>限制数量{{['a','b','c','d'] | limitTo:idx}}</h3>
+</div>
+
+<div>
+    <h2>10.数字过滤器</h2>
+    <input ng-model="numb" type="text" placeholder="Enter msg">
+    <input ng-model="idx" type="text" placeholder="Enter count">
+    <h3>默认三位小数四舍五入{{numb | number}}</h3>
+    <h3>小数位数{{numb | number:idx}}</h3>
+</div>
+
+</body>
+</html>

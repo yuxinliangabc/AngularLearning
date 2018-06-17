@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Lesson1">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="../js/controller/Lesson1.js"></script>
+    <title>Lesson1</title>
+</head>
+<body>
+Lesson1
+<div ng-controller="NameController">
+    <h1>Hello {{Author.Name}}</h1>
+    请输入:<input ng-model="Author.Age">
+    <a ng-click="ResetAge()" class="button">年龄归零</a>
+    年龄是：{{Author.Age}}
+</div>
+<div ng-controller="FatherController">
+    <div ng-controller="ChildController">
+        <a ng-click="SayHello()">Say Hello</a>
+    </div>
+    {{person}}
+</div>
+</body>
+</html>
