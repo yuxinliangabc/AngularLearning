@@ -43,9 +43,21 @@
     <!--<div ng-model="greeting">-->
     <p ng-bind="greeting"></p>
     <h1>{{greeting}}</h1>
-    <p ng-model="greeting" ng-cloak>{{greeting}}</p>
+    <div ng-init="greet='ABC'">
+        <p ng-cloak>{{greet}}</p>
+    </div>
     <!--</div>-->
     <h3>没有所谓的抖动？此外，只有$timeout内的数据改变才会被ng捕捉到,settimeout方法不会被捕获</h3>
+
+    <h2>3.ng-select</h2>
+    <div ng-controller="CityController">
+        <select ng-model="city" ng-options="city.name for city in cities">
+            <option value="">Choose City</option>
+        </select>
+        BestCity:{{city.name}}
+    </div>
+
+    <h3>格式为展示名称+for+对象名+in+对象数组名</h3>
 </div>
 
 </body>

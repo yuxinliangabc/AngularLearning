@@ -35,3 +35,14 @@ angular.module("Lesson8",[])
         }
     )
 
+    .controller('CityController',
+        function($scope){
+            $scope.cities=[
+                {name:'天津'},
+                {name:'北京'},
+                {name:'上海'},
+                {name:'深圳'}
+            ]
+        }
+    )
+

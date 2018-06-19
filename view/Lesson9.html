@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Lesson9">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="../js/controller/Lesson9.js"></script>
+    <link rel="stylesheet" href="../css/FormCheck.css" type="text/css"/>
+    <title>Lesson9</title>
+</head>
+<body>
+第9课学习 指令详解
+<div ng-controller="MyController91">
+    <h2>1.ng-if</h2>
+    <input type="checkbox" ng-model="isChecked">
+    <a ng-if="isChecked">Hello Checked!</a>
+    <a ng-if="!isChecked">Hello UnChecked!</a>
+    <h3></h3>
+</div>
+</body>
+</html>
