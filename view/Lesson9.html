@@ -9,12 +9,78 @@
 </head>
 <body>
 第9课学习 指令详解
-<div ng-controller="MyController91">
-    <h2>1.ng-if</h2>
-    <input type="checkbox" ng-model="isChecked">
-    <a ng-if="isChecked">Hello Checked!</a>
-    <a ng-if="!isChecked">Hello UnChecked!</a>
-    <h3></h3>
+<div>
+    <h2>1.指令scope作用域</h2>
+    <p>直接调用相同的作用域对象 默认 scope = false</p>
+    <p>从当前作用域对象继承一个新的作用域对象 scope = true</p>
+    <p>创建一个同当前作用域相隔离的作用域对象 scope = {}</p>
+    <h3>scope的三个用法 【外部作用域】、【继承作用域】、【隔离作用域】</h3>
+</div>
+<div ng-controller='MyController91'>
+    Outside myDirective: {{ myProperty }}
+    <div my-directive2 ng-init="myProperty = 'wow, this is cool2'">
+    </div>
+    <h3>scope = true 相当于子指令创建了自己的新的作用域</h3>
+</div>
+
+<div ng-controller='MyController92'>
+    Outside myDirective: {{ myProperty }}
+    <div my-directive3 ng-init="myProperty = 'wow, this is cool3'">
+    </div>
+    <h3>scope = false 表明子指令没有自己的作用域，用了和外部外部作用域相同的作用域</h3>
+</div>
+
+<br>
+
+<div ng-init="myProperty='wow,thisiscool'">
+    Surrounding scope: {{ myProperty }}
+    <div my-directive4></div>
+</div>
+<h3>scope = {} 表明隔离的作用域，指令内不能使用外部作用域的变量</h3>
+
+<div ng-controller='MyController93'>
+    <h2>2.作用域数据绑定</h2>
+    <p>共三种绑定方式</p>
+    <p>1. @ (or @attr) </p>
+    <p>2. = (or =attr) </p>
+    <p>3. & (or &attr) </p>
+    <input type="text" ng-model="to"/>
+    <!-- 调用指令 -->
+    <div scope-example ng-model="to"
+         on-send="sendMail()"
+         from-name="ari@fullstack.io" >
+    </div>
+    <h3>TODO未完成函数传递</h3>
+</div>
+<div>
+    <h2>3.transclude</h2>
+    <p>只有当你希望创建一个可以包含任意内容的指令时，才使用transclude: true</p>
+    <div sidebox title="Links">
+        <ul>
+            <li>First link</li>
+            <li>Second link</li>
+        </ul>
+    </div>
+    <div sidebox title="TagCloud">
+        <div class="tagcloud">
+            <a href="">Graphics</a>
+            <a href="">AngularJS</a>
+            <a href="">D3</a>
+            <a href="">Front-end</a>
+            <a href="">Startup</a>
+        </div>
+    </div>
+    <h3>如果指令使用了transclude参数，那么在控制器（下面马上会介绍）中就无法正常监听数
+        据模型的变化了。这就是最佳实践总是建议在链接函数里使用$watch服务的原因</h3>
+</div>
+
+<div>
+    <h2>4. 控制器函数</h2>
+    <link href="laksdjklfjlka">
+
+    <h3>问题：clone的text来自哪里？如何传参</h3>
+    <h3>指令的控制器和link函数可以进行互换。控制器主要是用来提供可在指令间复用的行为，但
+        链接函数只能在当前内部指令中定义行为，且无法在指令间复用</h3>
 </div>
 </body>
 </html>
